@@ -70,6 +70,7 @@ export default function StudentLifePage() {
     <>
       <PageHero
         crumb="Student Life"
+        cta={{ label: "Apply for 2026–27", href: "/admissions" }}
         cards={[
           { img: "/assets/annual-day-dance.jpg", label: "Annual Day", d: "Apr", m: "Stage" },
           { img: "/assets/christmas.jpg", label: "Christmas Joy", d: "24", m: "Dec" },
@@ -82,7 +83,7 @@ export default function StudentLifePage() {
       />
 
       {/* Houses */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -91,7 +92,7 @@ export default function StudentLifePage() {
             highlight="one family"
             subtitle="Every student belongs to a house — a smaller family within the school that builds belonging, leadership and healthy competition."
           />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-7">
             {HOUSES.map((h, i) => (
               <div
                 key={h.name}
@@ -116,7 +117,7 @@ export default function StudentLifePage() {
       </section>
 
       {/* Clubs */}
-      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3]">
         <Container>
           <SectionHeading
             center
@@ -124,7 +125,7 @@ export default function StudentLifePage() {
             title="A place for every"
             highlight="passion"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
             {CLUBS.map((c, i) => (
               <div
                 key={c.title}
@@ -149,7 +150,7 @@ export default function StudentLifePage() {
       </section>
 
       {/* Events */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -157,7 +158,7 @@ export default function StudentLifePage() {
             title="Moments we"
             highlight="look forward to"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-7">
             {EVENTS.map((e, i) => (
               <div
                 key={e.title}
@@ -188,7 +189,7 @@ export default function StudentLifePage() {
       </section>
 
       {/* Gallery */}
-      <section className="pb-20 md:pb-[120px] px-8">
+      <section className="pb-20 md:pb-[120px]">
         <Container>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {GALLERY.map((g, i) => (

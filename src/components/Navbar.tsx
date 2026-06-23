@@ -102,7 +102,7 @@ export default function Navbar() {
 
         {menuOpen && (
           <div className="xl:hidden mx-6 mt-2">
-            <div className="mx-auto max-w-[1500px] glass-gold rounded-3xl p-6 flex flex-col gap-2 text-white/85 uppercase tracking-wider text-sm font-semibold">
+            <div className="mx-auto max-w-[1500px] glass-gold-strong rounded-3xl p-6 flex flex-col gap-2 text-white/85 uppercase tracking-wider text-sm font-semibold">
               <Link href="/" className="py-2">
                 Home
               </Link>

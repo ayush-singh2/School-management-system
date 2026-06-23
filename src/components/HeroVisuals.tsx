@@ -5,23 +5,26 @@ import HeroBackdrop from "./HeroBackdrop";
 import SolarSystem from "./SolarSystem";
 
 /**
- * Hero background:
- *  - WebGL available → the realistic 3D <SolarSystem>
- *  - otherwise → the CSS planet fallback (e.g. VS Code's preview browser)
+ * Hero background. To avoid flashing the CSS fallback before the 3D scene
+ * loads, we render NOTHING until we've detected WebGL support (the hero's
+ * own dark background shows through in the meantime):
+ *  - WebGL available  → the 3D <SolarSystem>
+ *  - WebGL missing    → the CSS planet fallback (e.g. VS Code preview)
  */
 export default function HeroVisuals({ compact = false }: { compact?: boolean }) {
-  const [webgl, setWebgl] = useState(false);
+  const [mode, setMode] = useState<"pending" | "webgl" | "css">("pending");
 
   useEffect(() => {
     try {
       const c = document.createElement("canvas");
       const gl = c.getContext("webgl2") || c.getContext("webgl");
-      setWebgl(!!gl);
+      setMode(gl ? "webgl" : "css");
     } catch {
-      setWebgl(false);
+      setMode("css");
     }
   }, []);
 
-  if (webgl) return <SolarSystem />;
-  return <HeroBackdrop compact={compact} showPlanets />;
+  if (mode === "webgl") return <SolarSystem />;
+  if (mode === "css") return <HeroBackdrop compact={compact} showPlanets />;
+  return null; // pending → just the dark hero background, no old-animation flash
 }

@@ -28,7 +28,7 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className="absolute -bottom-6 -right-4 glass-light shimmer rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
+          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-4 glass-light shimmer rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
             <Icon name="verified" className="text-secondary" />
             <div className="leading-tight">
               <div className="font-bold text-primary text-sm">Hansi Rani Trust</div>
@@ -67,12 +67,14 @@ export default function About() {
               <span className="text-sm font-semibold text-primary">NEP Aligned</span>
             </div>
           </div>
-          <Link
-            href="/about"
-            className="magnetic btn-gold inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold transition-all"
-          >
-            Discover Our Story <Icon name="arrow_forward" />
-          </Link>
+          <div className="text-center md:text-left">
+            <Link
+              href="/about"
+              className="magnetic btn-gold inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold transition-all"
+            >
+              Discover Our Story <Icon name="arrow_forward" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

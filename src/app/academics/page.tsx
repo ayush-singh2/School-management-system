@@ -80,6 +80,7 @@ export default function AcademicsPage() {
     <>
       <PageHero
         crumb="Academics"
+        cta={{ label: "Talk to a Counsellor", href: "/contact" }}
         cards={[
           { img: "/assets/science-exhibition.jpg", label: "Science Exhibition", d: "NEP", m: "Aligned" },
           { img: "/assets/award-winners.jpg", label: "Our Toppers", d: "100%", m: "Pass" },
@@ -92,7 +93,7 @@ export default function AcademicsPage() {
       />
 
       {/* Stages */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -101,7 +102,7 @@ export default function AcademicsPage() {
             highlight="stage by stage"
             subtitle="Each stage is designed to meet children where they are — and gently stretch them to where they can be."
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-7">
             {STAGES.map((s, i) => (
               <div
                 key={s.title}
@@ -129,7 +130,7 @@ export default function AcademicsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3]">
         <Container>
           <SectionHeading
             center
@@ -137,7 +138,7 @@ export default function AcademicsPage() {
             title="The building blocks of a"
             highlight="great classroom"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
             {FEATURES.map((f, i) => (
               <FeatureCard key={f.title} {...f} delay={i * 0.07} />
             ))}
@@ -146,7 +147,7 @@ export default function AcademicsPage() {
       </section>
 
       {/* Pledge / quote band */}
-      <section className="py-20 md:py-[120px] bg-primary text-white px-8 overflow-hidden">
+      <section className="py-20 md:py-[120px] bg-primary text-white overflow-hidden">
         <Container className="max-w-3xl text-center reveal">
           <Icon
             name="format_quote"

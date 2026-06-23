@@ -42,7 +42,10 @@ export default function Hero() {
           (stronger/even on phones, fading to the right on desktop) */}
       <div
         className="absolute inset-0 z-10 pointer-events-none md:hidden"
-        style={{ background: "rgba(6,12,24,0.6)" }}
+        style={{
+          background:
+            "linear-gradient(180deg,rgba(6,12,24,0.92) 0%,rgba(6,12,24,0.8) 45%,rgba(6,12,24,0.45) 75%,rgba(6,12,24,0.2) 100%)",
+        }}
       />
       <div
         className="absolute inset-0 z-10 pointer-events-none hidden md:block"

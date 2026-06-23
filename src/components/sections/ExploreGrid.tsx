@@ -52,7 +52,7 @@ export default function ExploreGrid() {
           highlight="one click away"
           subtitle="A complete look at life at Jitendra Public School — from the first classroom to the wider world our students step into."
         />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
           {TILES.map((t, i) => (
             <Link
               key={t.href}

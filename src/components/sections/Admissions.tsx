@@ -7,7 +7,7 @@ export default function Admissions() {
       id="admissions"
       className="py-20 md:py-[120px] px-8 bg-gradient-to-b from-[#d6e1f3] to-[#e8eefa]"
     >
-      <div className="mx-auto max-w-[1500px] grid md:grid-cols-2 gap-7">
+      <div className="mx-auto max-w-[1500px] grid md:grid-cols-2 gap-4 sm:gap-7">
         <div className="reveal-left lux-card bg-primary text-white shimmer rounded-[40px] p-10 flex flex-col gap-5 border border-secondary/25 shadow-[0_24px_55px_-22px_rgba(13,27,52,0.5)]">
           <span className="grid place-items-center w-14 h-14 rounded-2xl bg-secondary/20 text-secondary-bright border border-secondary/30">
             <Icon name="assignment_turned_in" className="text-3xl" />

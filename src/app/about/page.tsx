@@ -54,6 +54,7 @@ export default function AboutPage() {
     <>
       <PageHero
         crumb="About Us"
+        cta={{ label: "Plan a Visit", href: "/contact" }}
         cards={[
           { img: "/assets/flag-hoisting.jpg", label: "Our Campus", d: "2012", m: "Since" },
           { img: "/assets/director-couple.jpg", label: "Our Director", d: "JPS", m: "Lead" },
@@ -66,7 +67,7 @@ export default function AboutPage() {
       />
 
       {/* Founder / story */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container className="grid md:grid-cols-2 gap-16 items-center">
           <div className="reveal-left relative">
             <div className="absolute -inset-5 bg-secondary/20 rounded-[48px] blur-3xl opacity-40" />
@@ -80,7 +81,7 @@ export default function AboutPage() {
                 style={{ width: "100%", height: "500px" }}
               />
             </div>
-            <div className="absolute -bottom-6 -right-4 glass-light shimmer rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:-right-4 glass-light shimmer rounded-2xl px-5 py-4 shadow-xl flex items-center gap-3">
               <Icon name="verified" className="text-secondary" />
               <div className="leading-tight">
                 <div className="font-bold text-primary text-sm">
@@ -133,9 +134,9 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3]">
         <Container>
-          <div className="grid md:grid-cols-2 gap-7">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-7">
             <div className="reveal-left lux-card bg-primary text-white shimmer rounded-[40px] p-10 border border-secondary/25 shadow-[0_24px_55px_-22px_rgba(13,27,52,0.5)]">
               <span className="grid place-items-center w-14 h-14 rounded-2xl bg-secondary/20 text-secondary-bright border border-secondary/30 mb-6">
                 <Icon name="visibility" className="text-3xl" />
@@ -167,7 +168,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -175,7 +176,7 @@ export default function AboutPage() {
             title="Four values at the"
             highlight="heart of everything"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-7">
             {VALUES.map((v, i) => (
               <FeatureCard key={v.title} {...v} delay={i * 0.08} />
             ))}
@@ -184,7 +185,7 @@ export default function AboutPage() {
       </section>
 
       {/* Milestones */}
-      <section className="py-20 md:py-[120px] bg-primary text-white px-8 overflow-hidden">
+      <section className="py-20 md:py-[120px] bg-primary text-white overflow-hidden">
         <Container>
           <SectionHeading
             dark

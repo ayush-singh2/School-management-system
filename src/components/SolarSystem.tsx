@@ -26,11 +26,14 @@ export default function SolarSystem() {
 
     let renderer: THREE.WebGLRenderer;
     try {
-      renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     } catch {
       canvas.style.display = "none";
       return;
     }
+    // transparent until the scene/skybox loads, so the hero's dark
+    // background shows through (no black or old-animation flash)
+    renderer.setClearColor(0x000000, 0);
     const W = wrap.clientWidth || window.innerWidth;
     const H = wrap.clientHeight || window.innerHeight;
     const isMobile = W < 768;
@@ -42,7 +45,10 @@ export default function SolarSystem() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 1000);
     camera.position.set(-175, 115, 5);
-    camera.lookAt(0, 0, 0);
+    // on phones, aim higher so the system (and bright sun) sits LOWER on
+    // screen, away from the centered hero text
+    const lookY = isMobile ? 58 : 0;
+    camera.lookAt(0, lookY, 0);
 
     const loadTexture = new THREE.TextureLoader();
     const cubeTextureLoader = new THREE.CubeTextureLoader();
@@ -50,7 +56,7 @@ export default function SolarSystem() {
     // postprocessing — bloom for the glowing sun
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    const bloom = new UnrealBloomPass(new THREE.Vector2(W, H), 1, 0.4, 0.85);
+    const bloom = new UnrealBloomPass(new THREE.Vector2(W, H), isMobile ? 0.5 : 1, 0.4, 0.85);
     bloom.threshold = 1;
     bloom.radius = 0.9;
     composer.addPass(bloom);
@@ -58,17 +64,27 @@ export default function SolarSystem() {
 
     scene.add(new THREE.AmbientLight(0x222222, 6));
 
-    // star skybox
-    scene.background = cubeTextureLoader.load([
-      IMG + "3.jpg",
-      IMG + "1.jpg",
-      IMG + "2.jpg",
-      IMG + "2.jpg",
-      IMG + "4.jpg",
-      IMG + "2.jpg",
-    ]);
+    // star skybox — applied only once loaded, so the canvas stays
+    // transparent (dark hero bg visible) instead of flashing black
+    cubeTextureLoader.load(
+      [
+        IMG + "3.jpg",
+        IMG + "1.jpg",
+        IMG + "2.jpg",
+        IMG + "2.jpg",
+        IMG + "4.jpg",
+        IMG + "2.jpg",
+      ],
+      (cube) => {
+        scene.background = cube;
+      },
+    );
 
-    const settings = { accelerationOrbit: 1, acceleration: 1, sunIntensity: 1.9 };
+    const settings = {
+      accelerationOrbit: 1,
+      acceleration: 1,
+      sunIntensity: isMobile ? 1.0 : 1.9,
+    };
 
     // ---- Sun ----
     const sunSize = 697 / 40;
@@ -336,7 +352,7 @@ export default function SolarSystem() {
       // gentle parallax around the base view
       camera.position.x += (basePos.x + target.x * 18 - camera.position.x) * 0.04;
       camera.position.y += (basePos.y - target.y * 10 - camera.position.y) * 0.04;
-      camera.lookAt(0, 0, 0);
+      camera.lookAt(0, lookY, 0);
 
       composer.render();
     }

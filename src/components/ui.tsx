@@ -193,6 +193,7 @@ export function PageHero({
   subtitle,
   crumb,
   cards,
+  cta,
 }: {
   overline: string;
   title: string;
@@ -200,6 +201,7 @@ export function PageHero({
   subtitle: string;
   crumb: string;
   cards?: HangCard[];
+  cta?: { label: string; href: string };
 }) {
   return (
     <section className="relative bg-primary overflow-hidden">
@@ -229,7 +231,7 @@ export function PageHero({
         />
       )}
 
-      <div className="relative z-10 max-w-[1500px] px-8 lg:px-16 min-h-[80vh] flex items-center pt-32 pb-16">
+      <div className="relative z-10 max-w-[1500px] px-8 lg:px-16 min-h-[80vh] flex items-center pt-28 md:pt-32 pb-28 md:pb-16">
         <div className="w-full max-w-3xl">
           <nav className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/50 mb-6">
             <Link href="/" className="hover:text-secondary transition-colors">
@@ -253,6 +255,22 @@ export function PageHero({
           <p className="mt-6 text-white/80 text-lg leading-relaxed max-w-2xl">
             {subtitle}
           </p>
+          {cta &&
+            (cta.href.startsWith("/") ? (
+              <Link
+                href={cta.href}
+                className="magnetic btn-gold inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all mt-8"
+              >
+                {cta.label} <Icon name="arrow_forward" />
+              </Link>
+            ) : (
+              <a
+                href={cta.href}
+                className="magnetic btn-gold inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all mt-8"
+              >
+                {cta.label} <Icon name="arrow_forward" />
+              </a>
+            ))}
         </div>
       </div>
     </section>

@@ -84,6 +84,7 @@ export default function InfrastructurePage() {
     <>
       <PageHero
         crumb="Infrastructure"
+        cta={{ label: "Book a Campus Tour", href: "/contact" }}
         cards={[
           { img: "/assets/flag-hoisting.jpg", label: "Assembly Ground", d: "30+", m: "Classes" },
           { img: "/assets/feast-wide.jpg", label: "Open-Air Dining", d: "RO", m: "Water" },
@@ -96,7 +97,7 @@ export default function InfrastructurePage() {
       />
 
       {/* Featured facilities */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -104,7 +105,7 @@ export default function InfrastructurePage() {
             title="Built for"
             highlight="real learning"
           />
-          <div className="grid md:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
             {FEATURED.map((f, i) => (
               <div
                 key={f.title}
@@ -140,7 +141,7 @@ export default function InfrastructurePage() {
       </section>
 
       {/* More facilities */}
-      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3]">
         <Container>
           <SectionHeading
             center
@@ -148,7 +149,7 @@ export default function InfrastructurePage() {
             title="Care in every"
             highlight="corner"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
             {MORE.map((m, i) => (
               <FeatureCard key={m.title} {...m} delay={i * 0.07} />
             ))}
@@ -157,7 +158,7 @@ export default function InfrastructurePage() {
       </section>
 
       {/* Gallery */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center

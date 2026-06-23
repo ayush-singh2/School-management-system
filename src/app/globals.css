@@ -15,7 +15,10 @@
   --color-on-surface: #0b1c30;
 
   --font-display: var(--font-playfair), Georgia, serif;
-  --font-body: var(--font-manrope), system-ui, sans-serif;
+  /* SF Pro on Apple devices, clean sans fallback elsewhere */
+  --font-body:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    var(--font-manrope), "Segoe UI", system-ui, sans-serif;
 }
 
 :root {
@@ -201,6 +204,12 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(197, 160, 89, 0.22);
+}
+.glass-gold-strong {
+  background: rgba(13, 27, 52, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 160, 89, 0.4);
 }
 
 /* ----- Shimmer sweep ----- */

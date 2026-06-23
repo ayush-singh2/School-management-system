@@ -38,7 +38,7 @@ export default function Facilities() {
             Everything a growing mind needs
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
           {FACILITIES.map((f, i) => (
             <div
               key={f.title}

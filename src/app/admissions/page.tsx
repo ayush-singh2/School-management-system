@@ -95,6 +95,7 @@ export default function AdmissionsPage() {
     <>
       <PageHero
         crumb="Admissions"
+        cta={{ label: "Start Your Application", href: "#apply" }}
         cards={[
           { img: "/assets/admissions-desk.jpg", label: "Admissions Open", d: "26", m: "–27" },
           { img: "/assets/topper-felicitation.jpg", label: "Celebrating Toppers", d: "Now", m: "Apply" },
@@ -107,7 +108,7 @@ export default function AdmissionsPage() {
       />
 
       {/* Process */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -115,7 +116,7 @@ export default function AdmissionsPage() {
             title="Four simple"
             highlight="steps"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-7">
             {STEPS.map((s, i) => (
               <div
                 key={s.n}
@@ -141,7 +142,7 @@ export default function AdmissionsPage() {
       </section>
 
       {/* Criteria + Prospectus */}
-      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3]">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal-left">
             <Overline className="mb-4">Age Criteria</Overline>
@@ -174,28 +175,25 @@ export default function AdmissionsPage() {
 
           <div className="reveal-right relative">
             <div className="absolute -inset-4 bg-secondary/20 rounded-[40px] blur-3xl opacity-40" />
-            <div className="relative rounded-[36px] overflow-hidden border border-secondary/20 shadow-2xl bg-white">
+            <div className="relative rounded-[36px] overflow-hidden border border-secondary/20 shadow-2xl min-h-[440px] flex flex-col justify-end">
               <Image
                 src="/assets/prospectus.png"
                 alt="School prospectus 2026–27"
-                width={680}
-                height={460}
-                className="w-full object-cover"
-                style={{ width: "100%", height: "auto" }}
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover"
               />
-              <div className="p-7 flex items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-xl font-bold text-primary">
-                    Prospectus 2026–27
-                  </h3>
-                  <p className="text-on-surface/60 text-sm">
-                    Everything about fees, dates & rules.
-                  </p>
-                </div>
+              <div className="relative p-7 bg-gradient-to-t from-primary via-primary/85 to-transparent">
+                <h3 className="font-display text-2xl font-bold text-white">
+                  Prospectus 2026–27
+                </h3>
+                <p className="text-white/75 text-sm mb-5">
+                  Everything about fees, dates &amp; rules.
+                </p>
                 <a
                   href="/assets/prospectus.png"
                   download
-                  className="magnetic btn-gold inline-flex items-center gap-2 px-5 py-3 rounded-full font-bold text-sm transition-all shrink-0"
+                  className="magnetic btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all"
                 >
                   <Icon name="download" /> Download
                 </a>
@@ -206,7 +204,7 @@ export default function AdmissionsPage() {
       </section>
 
       {/* Fees */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -215,7 +213,7 @@ export default function AdmissionsPage() {
             highlight="real value"
             subtitle="Detailed, class-wise fee sheets are available with the prospectus and at the school office."
           />
-          <div className="grid md:grid-cols-3 gap-7">
+          <div className="grid md:grid-cols-3 gap-4 sm:gap-7">
             {FEES.map((f) => (
               <div
                 key={f.tier}
@@ -259,7 +257,7 @@ export default function AdmissionsPage() {
       </section>
 
       {/* Apply form */}
-      <section id="apply" className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section id="apply" className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3]">
         <Container className="grid lg:grid-cols-[0.85fr_1.15fr] gap-10 items-start">
           <div className="reveal-left lg:sticky lg:top-28">
             <SectionHeading
@@ -316,7 +314,7 @@ export default function AdmissionsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container className="max-w-3xl">
           <SectionHeading
             center

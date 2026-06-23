@@ -65,6 +65,7 @@ export default function AlumniPage() {
     <>
       <PageHero
         crumb="Alumni Network"
+        cta={{ label: "Join the Network", href: "#register" }}
         cards={[
           { img: "/assets/award-winners.jpg", label: "Our Achievers", d: "2000+", m: "Alumni" },
           { img: "/assets/topper-felicitation.jpg", label: "Our Toppers", d: "13+", m: "Batches" },
@@ -77,7 +78,7 @@ export default function AlumniPage() {
       />
 
       {/* Notable alumni */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -86,7 +87,7 @@ export default function AlumniPage() {
             highlight="shine"
             subtitle="Every year our students step onto the stage to be celebrated — the start of journeys that carry them far beyond Madhepura."
           />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-7">
             {ACHIEVERS.map((a, i) => (
               <div
                 key={a.label}
@@ -118,7 +119,7 @@ export default function AlumniPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-[120px] bg-primary text-white px-8 overflow-hidden">
+      <section className="py-20 md:py-[120px] bg-primary text-white overflow-hidden">
         <Container>
           <SectionHeading
             dark
@@ -127,7 +128,7 @@ export default function AlumniPage() {
             title="Stories that"
             highlight="travelled far"
           />
-          <div className="grid md:grid-cols-2 gap-7">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-7">
             {TESTIMONIALS.map((t, i) => (
               <div
                 key={t.name}
@@ -156,7 +157,7 @@ export default function AlumniPage() {
       </section>
 
       {/* Perks */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
           <SectionHeading
             center
@@ -164,7 +165,7 @@ export default function AlumniPage() {
             title="Ways to"
             highlight="stay involved"
           />
-          <div className="grid sm:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-7">
             {PERKS.map((p, i) => (
               <div
                 key={p.title}
@@ -187,7 +188,7 @@ export default function AlumniPage() {
       </section>
 
       {/* Register */}
-      <section className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] px-8">
+      <section id="register" className="py-20 md:py-[120px] bg-gradient-to-b from-[#e8eefa] to-[#d6e1f3] scroll-mt-24">
         <Container className="max-w-3xl">
           <SectionHeading
             center

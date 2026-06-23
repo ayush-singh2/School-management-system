@@ -15,7 +15,7 @@ const MOMENTS = [
 
 export default function MomentsGallery() {
   return (
-    <section className="py-20 md:py-[120px] px-8">
+    <section className="py-20 md:py-[120px]">
       <Container>
         <SectionHeading
           center

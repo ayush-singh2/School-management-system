@@ -37,6 +37,7 @@ export default function ContactPage() {
     <>
       <PageHero
         crumb="Contact"
+        cta={{ label: "Call +91 94300 28159", href: "tel:+919430028159" }}
         cards={[
           { img: "/assets/flag-hoisting.jpg", label: "Visit Our Campus", d: "Mon", m: "–Sat" },
           { img: "/assets/admissions-desk.jpg", label: "Meet Our Team", d: "8–2", m: "PM" },
@@ -48,9 +49,9 @@ export default function ContactPage() {
       />
 
       {/* Detail cards */}
-      <section className="py-20 md:py-[120px] px-8">
+      <section className="py-20 md:py-[120px]">
         <Container>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-7">
             {DETAILS.map((d, i) => (
               <div
                 key={d.title}
@@ -75,7 +76,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map + form */}
-      <section className="pb-20 md:pb-[120px] px-8">
+      <section className="pb-20 md:pb-[120px]">
         <Container className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="reveal-left">
             <SectionHeading

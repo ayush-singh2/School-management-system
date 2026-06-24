@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --primary-light: #dbeafe;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --warning: #d97706;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+
+  h1, h2, h3 { @apply font-semibold tracking-tight; }
+}
+
+@layer components {
+  /* ── Layout ── */
+  .portal-shell {
+    @apply flex h-screen overflow-hidden bg-slate-50;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    @apply shrink-0 flex flex-col bg-slate-900 text-white h-full overflow-y-auto;
+  }
+
+  .sidebar-logo {
+    @apply flex items-center gap-3 px-5 py-5 border-b border-slate-700/50;
+  }
+
+  .sidebar-logo-icon {
+    @apply w-9 h-9 rounded-xl bg-blue-500 flex items-center justify-center text-white font-bold text-sm shrink-0;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg mx-2 text-sm font-medium text-slate-400 transition-all duration-150 cursor-pointer;
+  }
+  .nav-item:hover { @apply bg-slate-800 text-white; }
+  .nav-item.active { @apply bg-blue-600 text-white shadow-md; }
+  .nav-icon { @apply w-4 h-4 shrink-0; }
+
+  /* ── Main content ── */
+  .portal-main {
+    @apply flex-1 flex flex-col overflow-hidden;
+  }
+
+  .topbar {
+    @apply flex items-center justify-between px-6 py-4 bg-white border-b border-slate-100 shrink-0;
+  }
+
+  .content-area {
+    @apply flex-1 overflow-y-auto px-6 py-6 space-y-6;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm;
+  }
+
+  .stat-card {
+    @apply card p-5 flex items-start gap-4;
+  }
+
+  .stat-icon {
+    @apply w-11 h-11 rounded-xl flex items-center justify-center shrink-0;
+  }
+
+  /* ── AI Insight ── */
+  .ai-card {
+    @apply rounded-2xl p-4 border border-blue-100 bg-gradient-to-r from-blue-50 to-indigo-50;
+  }
+
+  .ai-badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-full mb-2;
+  }
+
+  /* ── Badges ── */
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .badge-green  { @apply badge bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200; }
+  .badge-red    { @apply badge bg-red-50 text-red-700 ring-1 ring-red-200; }
+  .badge-yellow { @apply badge bg-amber-50 text-amber-700 ring-1 ring-amber-200; }
+  .badge-blue   { @apply badge bg-blue-50 text-blue-700 ring-1 ring-blue-200; }
+  .badge-gray   { @apply badge bg-slate-100 text-slate-600 ring-1 ring-slate-200; }
+  .badge-purple { @apply badge bg-violet-50 text-violet-700 ring-1 ring-violet-200; }
+
+  /* ── Form inputs ── */
+  .input {
+    @apply block w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400
+           focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-colors;
+  }
+
+  /* ── Table ── */
+  .data-table { @apply w-full text-sm overflow-x-auto; }
+  .data-table table { @apply w-full; }
+  .data-table thead tr { @apply border-b border-slate-100; }
+  .data-table th { @apply pb-3 pt-1 px-5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide; }
+  .data-table tbody tr { @apply border-b border-slate-50 hover:bg-slate-50/80 transition-colors; }
+  .data-table td { @apply py-3 px-5 text-slate-700; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors shadow-sm;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-sm font-medium px-4 py-2.5 rounded-xl border border-slate-200 transition-colors;
+  }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    @apply h-2 rounded-full bg-slate-100 overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500;
+  }
+
+  /* ── Avatar ── */
+  .avatar {
+    @apply rounded-full flex items-center justify-center font-semibold text-white shrink-0;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-slate-200 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-slate-300; }

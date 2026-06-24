@@ -1,0 +1,9 @@
+{
+  "name": "@school-os/config",
+  "version": "0.1.0",
+  "private": true,
+  "files": ["typescript", "eslint.js"],
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

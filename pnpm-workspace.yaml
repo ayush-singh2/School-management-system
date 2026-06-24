@@ -1,0 +1,5 @@
+packages:
+  - "school_website"
+  - "apps/*"
+  - "packages/*"
+  - "services/api"

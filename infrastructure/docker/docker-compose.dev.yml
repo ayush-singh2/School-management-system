@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: school-os-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: schoolos
+      POSTGRES_PASSWORD: schoolos_dev
+      POSTGRES_DB: school_os
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: school-os-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_data:/data
+
+  # Uncomment to run AI microservice in Docker
+  # ai:
+  #   build:
+  #     context: ../../services/ai
+  #     dockerfile: Dockerfile
+  #   container_name: school-os-ai
+  #   restart: unless-stopped
+  #   env_file: ../../services/ai/.env
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - postgres
+  #     - redis
+
+volumes:
+  postgres_data:
+  redis_data:

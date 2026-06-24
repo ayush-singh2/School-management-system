@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+  api-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: schoolos
+          POSTGRES_PASSWORD: schoolos_dev
+          POSTGRES_DB: school_os_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        working-directory: services/api
+        run: pnpm db:generate
+        env:
+          DATABASE_URL: postgresql://schoolos:schoolos_dev@localhost:5432/school_os_test
+
+      - name: Run API tests
+        working-directory: services/api
+        run: pnpm test
+        env:
+          DATABASE_URL: postgresql://schoolos:schoolos_dev@localhost:5432/school_os_test
+          JWT_SECRET: ci-test-secret
+
+  ai-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install AI dependencies
+        working-directory: services/ai
+        run: pip install -r requirements.txt
+
+      - name: Check syntax
+        working-directory: services/ai
+        run: python -m py_compile app/main.py app/config.py
